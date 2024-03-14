@@ -1,5 +1,11 @@
+using GarmentBE.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
+
+builder.Services.AddDbContext<AppDbContext>(
+	option => option.UseSqlServer(builder.Configuration.GetConnectionString("DBGarment")));
 // Add services to the container.
 
 builder.Services.AddControllers();
